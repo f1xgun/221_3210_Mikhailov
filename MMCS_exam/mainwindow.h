@@ -25,12 +25,17 @@ public:
 private slots:
     void on_login_button_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGridLayout *promocodes_grid;
     QScrollArea *scrollArea;
-    std::vector<Promocode> promocodes;
+    std::vector<Promocode*> promocodes;
+    QString generate_random_string(int length);
+    std::vector<int> invisiblePromocodeIndexes;
 
     void generate_promocodes(int count);
+    void generate_promocode(int index);
 };
 #endif // MAINWINDOW_H

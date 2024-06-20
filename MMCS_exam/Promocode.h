@@ -1,11 +1,13 @@
 #ifndef PROMOCODE_H
 #define PROMOCODE_H
 
-#include <string>
+#include <QString>
 
 class Promocode {
 public:
-    std::string code;
+    QString code;
+
+    Promocode(const QString &code) : code(code) {}
 };
 
 

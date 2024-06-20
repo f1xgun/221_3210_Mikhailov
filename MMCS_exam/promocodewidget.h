@@ -14,6 +14,7 @@ class PromocodeWidget : public QWidget
 public:
     explicit PromocodeWidget(QWidget *parent = nullptr);
     ~PromocodeWidget();
+    void setPromocodeText(const QString &text);
 
 private:
     Ui::PromocodeWidget *ui;

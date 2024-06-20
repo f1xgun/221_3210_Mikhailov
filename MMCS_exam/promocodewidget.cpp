@@ -14,3 +14,7 @@ PromocodeWidget::~PromocodeWidget()
 {
     delete ui;
 }
+
+void PromocodeWidget::setPromocodeText(const QString &text) {
+    ui->code->setText(text);
+}
