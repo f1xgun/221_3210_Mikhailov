@@ -74,7 +74,7 @@ QString MainWindow::generate_random_string(int length = 4) {
     QString randomString;
 
     for (int i = 0; i < length; ++i) {
-        int index = QRandomGenerator::global()->bounded(possibleCharacters.length());
+        int index = QRandomGenerator::system()->bounded(possibleCharacters.length());
         randomString.append(possibleCharacters.at(index));
     }
 
@@ -88,7 +88,7 @@ void MainWindow::on_pushButton_clicked()
         return;
     }
 
-    int randomIndex = QRandomGenerator::global()->bounded(invisiblePromocodeIndexes.size());
+    int randomIndex = QRandomGenerator::system()->bounded(invisiblePromocodeIndexes.size());
     int promocodeIndex = invisiblePromocodeIndexes.at(randomIndex);
     PromocodeWidget* promocodeWidget = qobject_cast<PromocodeWidget*>(promocodes_grid->itemAt(promocodeIndex)->widget());
 
