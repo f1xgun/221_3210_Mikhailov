@@ -94,9 +94,8 @@ void MainWindow::on_pushButton_clicked()
 
     QString encryptedPromoCode = promocodes.at(promocodeIndex)->code;
     QByteArray decryptedPromoCode;
-    qDebug() << encryptedPromoCode.toUtf8();
-    qDebug() << QByteArray::fromHex(QByteArray::fromStdString(encryptedPromoCode.toStdString()));
-    decrypt_code(this->key, encryptedPromoCode.toUtf8(), decryptedPromoCode);
+    qDebug() << encryptedPromoCode;
+    decrypt_code(this->key, QByteArray::fromHex(QByteArray::fromStdString(encryptedPromoCode.toStdString())), decryptedPromoCode);
     promocodeWidget->setPromocodeText(QString(decryptedPromoCode));
     invisiblePromocodeIndexes.erase(std::next(invisiblePromocodeIndexes.begin(), randomIndex), std::next(invisiblePromocodeIndexes.begin(), randomIndex + 1));
     generate_promocode(this->promocodes.size());
