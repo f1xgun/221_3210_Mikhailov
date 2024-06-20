@@ -23,6 +23,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(MMCS_exam
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        Promocode.h
+        promocodewidget.ui
+        promocodewidget.h promocodewidget.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET MMCS_exam APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
