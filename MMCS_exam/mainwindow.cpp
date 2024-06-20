@@ -81,7 +81,6 @@ void MainWindow::on_pushButton_clicked()
     PromocodeWidget* promocodeWidget = qobject_cast<PromocodeWidget*>(promocodes_grid->itemAt(promocodeIndex)->widget());
     promocodeWidget->setPromocodeText(promocodes.at(promocodeIndex)->code);
     invisiblePromocodeIndexes.erase(std::next(invisiblePromocodeIndexes.begin(), randomIndex), std::next(invisiblePromocodeIndexes.begin(), randomIndex + 1));
-    // Получить рандомный индекс и поменять в соответствующем виджете значение с ???? на значение промокода
     generate_promocode(this->promocodes.size());
 }
 
