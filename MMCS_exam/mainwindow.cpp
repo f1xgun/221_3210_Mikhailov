@@ -33,11 +33,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_login_button_clicked()
 {
-    this->key = QCryptographicHash::hash(
+    QByteArray key = QCryptographicHash::hash(
                          ui->password_input->text().toUtf8(),
                          QCryptographicHash::Sha256).toHex();
 
-    if (ui->password_input->text().toStdString() == RIGHT_PASSWORD) {
+    if (key == QByteArray::fromStdString(RIGHT_PASSWORD_HASH)) {
+        this->key = key;
         ui->error_text->setText("");
         ui->stackedWidget->setCurrentIndex(1);
         generate_promocodes(10);
@@ -69,16 +70,36 @@ void MainWindow::generate_promocode(int index) {
     this->promocodes.push_back(promocode);
 }
 
-QString MainWindow::generate_random_string(int length = 4) {
-    const QString possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    QString randomString;
+// QString MainWindow::generate_random_string(int length = 4) {
+//     const QString possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+//     QString randomString;
 
-    for (int i = 0; i < length; ++i) {
-        int index = QRandomGenerator::system()->bounded(possibleCharacters.length());
-        randomString.append(possibleCharacters.at(index));
+//     for (int i = 0; i < length; ++i) {
+//         int index = QRandomGenerator::system()->bounded(possibleCharacters.length());
+//         randomString.append(possibleCharacters.at(index));
+//     }
+
+//     return randomString;
+// }
+
+QString MainWindow::generate_random_string(int length = 4) {
+    // std::srand(static_cast<unsigned int>(std::time(NULL)));
+
+    std::string randomString = "";
+
+    for (size_t i = 0; i < length; ++i) {
+        int randValue = std::rand() % 62;
+
+        if (randValue < 26) {
+            randomString += 'A' + randValue;
+        } else if (randValue < 52) {
+            randomString += 'a' + (randValue - 26);
+        } else {
+            randomString += '0' + (randValue - 52);
+        }
     }
 
-    return randomString;
+    return QString::fromStdString(randomString).toUpper();
 }
 
 void MainWindow::on_pushButton_clicked()
