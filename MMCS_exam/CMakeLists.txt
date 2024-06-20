@@ -47,6 +47,19 @@ endif()
 
 target_link_libraries(MMCS_exam PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
+target_include_directories(
+    MMCS_exam
+    PRIVATE
+    D:/Qt/Tools/OpenSSLv3/Win_x64/include)
+target_link_libraries(
+    MMCS_exam # к какой цели подключать
+    PRIVATE # в каком режиме подключать
+    D:/Qt/Tools/OpenSSLv3/Win_x64/lib/libcrypto.lib) # что именно подключать
+target_link_libraries(
+    MMCS_exam # к какой цели подключать
+    PRIVATE # в каком режиме подключать
+    D:/Qt/Tools/OpenSSLv3/Win_x64/lib/libssl.lib)
+
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.

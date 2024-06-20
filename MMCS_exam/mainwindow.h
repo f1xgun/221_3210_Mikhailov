@@ -34,8 +34,11 @@ private:
     std::vector<Promocode*> promocodes;
     QString generate_random_string(int length);
     std::vector<int> invisiblePromocodeIndexes;
+    QByteArray key;
 
     void generate_promocodes(int count);
     void generate_promocode(int index);
+    int encrypt_code(const QByteArray& key_hex, const QByteArray & plainBytes, QByteArray & encryptedBytes);
+    int decrypt_code(const QByteArray& key_hex, const QByteArray & encryptedBytes, QByteArray & decryptedBytes);
 };
 #endif // MAINWINDOW_H
