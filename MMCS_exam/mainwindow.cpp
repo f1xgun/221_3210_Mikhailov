@@ -10,16 +10,15 @@ MainWindow::MainWindow(QWidget *parent)
     promocodes_grid(new QGridLayout)
 {
     ui->setupUi(this);
+    ui->verticalLayout_3->setAlignment(Qt::AlignHCenter);
 
     QWidget *containerWidget = new QWidget(this);
     containerWidget->setLayout(promocodes_grid);
 
-    // Добавляем containerWidget в QScrollArea для прокрутки
     QScrollArea *scrollArea = new QScrollArea(this);
     scrollArea->setWidget(containerWidget);
     scrollArea->setWidgetResizable(true);
 
-    // Добавляем scrollArea в основной layout
     ui->verticalLayout_2->layout()->addWidget(scrollArea);
 
 }
